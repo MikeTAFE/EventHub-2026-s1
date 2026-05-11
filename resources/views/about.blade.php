@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - EventHub</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('title', 'About EventHub')
+@section('content')
+
   <h1>About EventHub</h1>
 
   <p>Welcome, {{ $username }}! Here is some information about EventHub...</p>
@@ -20,5 +16,4 @@
     <p>NO SECRET MESSAGE FOR YOU!  ⛔</p>
   @endif
 
-</body>
-</html>
+@endsection
