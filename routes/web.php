@@ -1,18 +1,14 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    // Define event list
-    $events = [
-        "Sydney Music Fest",
-        "Melbourne Tech Expo",
-        "Brisbane Food Carnival",
-    ];
+// Route::get('/', function () {
+//     // write code...
+// });
 
-    // Pass data into the view
-    return view('home', ["events" => $events]);
-});
+// Use the "index" method of the EventController
+Route::get('/', [EventController::class, 'index']);
 
 Route::get('/about', function () {
     $data = [
