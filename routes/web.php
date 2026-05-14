@@ -3,7 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    // Define event list
+    $events = [
+        "Sydney Music Fest",
+        "Melbourne Tech Expo",
+        "Brisbane Food Carnival",
+    ];
+
+    // Pass data into the view
+    return view('home', ["events" => $events]);
 });
 
 Route::get('/about', function () {
