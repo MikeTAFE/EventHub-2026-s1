@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 // Use the "index" method of the EventController
 Route::get('/', [EventController::class, 'index']);
 
+// GET /events/3
+Route::get('/events/{id}', [EventController::class, 'show']);
+
 Route::get('/about', function () {
     $data = [
         'username' => 'Kim',
