@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title', 'EventHub')</title>
-  <link rel="stylesheet" href="css/test.css">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- <link rel="stylesheet" href="css/test.css"> --}}
 </head>
 <body>
   <header>
