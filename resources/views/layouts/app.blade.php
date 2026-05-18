@@ -19,7 +19,7 @@
           <a href="/about" class="hover:text-indigo-200">About</a>
           <a href="#" class="hover:text-indigo-200">Categories</a>
           <a href="#" class="hover:text-indigo-200">My Events</a>
-          <a href="#" class="hover:text-indigo-200">Contact</a>
+          <a href="/contact" class="hover:text-indigo-200">Contact</a>
         </nav>
       </div>
     </header>
@@ -34,9 +34,9 @@
         <p>&copy;{{ date('Y') }} EventHub - Australian Event Listings</p>
 
         <div class="space-x-4 mt-4 md:mt-0">
-          <a href="#" class="hover:text-white">About</a>
-          <a href="#" class="hover:text-white">Contact</a>
-          <a href="#" class="hover:text-white">Privacy</a>
+          <a href="/about" class="hover:text-white">About</a>
+          <a href="/contact" class="hover:text-white">Contact</a>
+          <a href="/privacy" class="hover:text-white">Privacy</a>
         </div>
       </div>
     </footer>
