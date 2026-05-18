@@ -2,11 +2,17 @@
 @section('title', '404 Not Found')
 @section('content')
 
-  <h1>404 | NOT FOUND</h1>
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
 
-  <p>The resource you requested could not be found.</p>
+      <h1 class="h1">404 | NOT FOUND</h1>
 
-  {{-- OPTIONAL: Display custom error message --}}
-  {{-- {{ $exception->getMessage() }} --}}
+      <p class="text-gray-600 leading-relaxed">The resource you requested could not be found.</p>
+
+      {{-- OPTIONAL: Display custom error message --}}
+      {{-- {{ $exception->getMessage() }} --}}
+
+    </div>
+  </section>
 
 @endsection
