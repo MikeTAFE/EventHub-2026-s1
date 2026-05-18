@@ -10,6 +10,11 @@
       <p class="text-gray-600 leading-relaxed">
         EventHub helps people discover and register for exciting events including music festivals, conferences, workshops, and networking opportunities.
       </p>
+
+      <img
+        src="{{ asset('images/colourful-lantern-festival.jpg') }}"
+        class="max-h-48 w-full object-cover"
+        alt="Colourful lanterns">
     </div>
   </section>
 
