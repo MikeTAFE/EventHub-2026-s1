@@ -12,13 +12,13 @@
     <!-- Header -->
     <header class="bg-indigo-600 text-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/"><h1 class="text-2xl font-bold">EventHub</h1></a>
+        <a href="{{ route("home") }}"><h1 class="text-2xl font-bold">EventHub</h1></a>
 
         <nav class="space-x-6">
-          <a href="/" class="hover:text-indigo-200">Home</a>
-          <a href="/about" class="hover:text-indigo-200">About</a>
-          <a href="/events" class="hover:text-indigo-200">Events</a>
-          <a href="/contact" class="hover:text-indigo-200">Contact</a>
+          <a href="{{ route("home") }}" class="hover:text-indigo-200">Home</a>
+          <a href="{{ route("about") }}" class="hover:text-indigo-200">About</a>
+          <a href="{{ route("events.index") }}" class="hover:text-indigo-200">Events</a>
+          <a href="{{ route("contact") }}" class="hover:text-indigo-200">Contact</a>
         </nav>
       </div>
     </header>
@@ -33,9 +33,9 @@
         <p>&copy;{{ date('Y') }} EventHub - Australian Event Listings</p>
 
         <div class="space-x-4 mt-4 md:mt-0">
-          <a href="/about" class="hover:text-white">About</a>
-          <a href="/contact" class="hover:text-white">Contact</a>
-          <a href="/privacy" class="hover:text-white">Privacy</a>
+          <a href="{{ route("about") }}" class="hover:text-white">About</a>
+          <a href="{{ route("contact") }}" class="hover:text-white">Contact</a>
+          <a href="{{ route("privacy") }}" class="hover:text-white">Privacy</a>
         </div>
       </div>
     </footer>

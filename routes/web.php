@@ -20,15 +20,15 @@ Route::get('/', function () {
     ];
 
     return view('home', $data);
-});
+})->name("home");
 
 // Events
 
 // Use the "index" method of the EventController
-Route::get('/events', [EventController::class, 'index']);
+Route::get('/events', [EventController::class, 'index'])->name("events.index");
 
 // GET /events/3
-Route::get('/events/{id}', [EventController::class, 'show']);
+Route::get('/events/{id}', [EventController::class, 'show'])->name("events.show");
 
 
 /*
@@ -42,12 +42,12 @@ Route::get('/about', function () {
         'nums' => [1, 6, 18, 4],
     ];
     return view('about', $data);
-});
+})->name("about");
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name("contact");
 
 Route::get('/privacy', function () {
     return view('privacy');
-});
+})->name("privacy");
