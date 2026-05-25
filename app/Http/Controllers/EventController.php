@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -11,15 +13,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        // Define event list
-        $events = [
-            "Sydney Music Fest",
-            "Melbourne Tech Expo",
-            "Brisbane Food Carnival",
-        ];
+        // Get all events from the database (TODO: paging...)
+        // $events = Event::where("name", "Jazz Festival")->get();
+        // $events = Event::where("name", "like", "%jazz%")->get();
+        $events = Event::all();
 
         // Pass data into the view
-        return view('home', ["events" => $events]);
+        return view('events', ["events" => $events]);
     }
 
     /**
@@ -29,29 +29,10 @@ class EventController extends Controller
      */
     public function show(int $id)
     {
-        // Define event list (full details)
-        $events = [
-            1 => [
-                "name" => "Sydney Music Fest",
-                "city" => "Sydney",
-            ],
-            2 => [
-                "name" => "Melbourne Tech Expo",
-                "city" => "Melbourne",
-            ],
-            3 => [
-                "name" => "Brisbane Food Carnival",
-                "city" => "Brisbane",
-            ],
-        ];
-
-        // Return error if event does not exist
-        if (!isset($events[$id])) {
-            // Trigger 404 error page (with message)
-            return abort(404, "Event '$id' could not be found.");
-        }
+        // Find event details (404 error if not found)
+        $event = Event::findOrFail($id);
 
         // Pass data into the view
-        return view('show_event', ["event" => $events[$id]]);
+        return view('show_event', ["event" => $event]);
     }
 }
