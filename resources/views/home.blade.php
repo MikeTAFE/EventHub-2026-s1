@@ -46,27 +46,15 @@
 
   <section class="max-w-7xl mx-auto px-6 py-16">
 
-    <h2 class="h2">Upcoming events</h2>
+    <h2 class="h2">Featured events</h2>
 
-    @if (empty($events))
-
-      <p>No upcoming events to display.</p>
-
-    @else
-    
-      <ul>
-        @foreach ($events as $event)
-          <li>{{ $event }}</li>
-        @endforeach
-      </ul>
-
-    @endif
+    @include('partials._event_cards', ["events" => $featuredEvents])
 
   </section>
 
   {{-- Featured Events --}}
   <section class="max-w-7xl mx-auto px-6 pb-16">
-    <h3 class="h3">Featured Events</h3>
+    <h3 class="h3">TESTING: Featured Events</h3>
 
     <div class="grid md:grid-cols-3 gap-6">
 

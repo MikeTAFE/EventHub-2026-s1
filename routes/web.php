@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Route;
 // Home
 Route::get('/', function () {
 
-    return view('home');
+    // Get featured events
+    $featuredEvents = \App\Models\Event::where("featured", 1)->get();
+
+    // View data
+    $data = [
+        "featuredEvents" => $featuredEvents
+    ];
+
+    return view('home', $data);
 });
 
 // Events
