@@ -7,8 +7,17 @@ use Illuminate\Support\Facades\Route;
 //     // write code...
 // });
 
+
+// Home
+Route::get('/', function () {
+
+    return view('home');
+});
+
+// Events
+
 // Use the "index" method of the EventController
-Route::get('/', [EventController::class, 'index']);
+Route::get('/events', [EventController::class, 'index']);
 
 // GET /events/3
 Route::get('/events/{id}', [EventController::class, 'show']);
