@@ -9,7 +9,7 @@
       {{-- Event Card --}}
       <div class="bg-white rounded-xl shadow overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+          src="{{ asset("images/events/{$event->image}") }}"
           alt="Event"
           class="h-48 w-full object-cover"
         >
