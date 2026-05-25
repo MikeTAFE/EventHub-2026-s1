@@ -17,8 +17,7 @@
         <nav class="space-x-6">
           <a href="/" class="hover:text-indigo-200">Home</a>
           <a href="/about" class="hover:text-indigo-200">About</a>
-          <a href="#" class="hover:text-indigo-200">Categories</a>
-          <a href="#" class="hover:text-indigo-200">My Events</a>
+          <a href="/events" class="hover:text-indigo-200">Events</a>
           <a href="/contact" class="hover:text-indigo-200">Contact</a>
         </nav>
       </div>
