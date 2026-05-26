@@ -9,7 +9,7 @@
       {{-- Event Card --}}
       <div class="bg-white rounded-xl shadow overflow-hidden">
         <img
-          src="{{ asset("images/events/{$event->image}") }}"
+          src="{{ $event->image_url }}"
           alt="Event"
           class="h-48 w-full object-cover"
         >
