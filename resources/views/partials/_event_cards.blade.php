@@ -19,12 +19,12 @@
           </h4>
 
           <p class="text-gray-600 text-sm mb-4">
-            July 20, 2026 • Brisbane
+            {{ $event->event_date?->format('M j, Y') ?? "---" }} • {{ $event->location }}
           </p>
 
           <div class="flex justify-between items-center">
             <span class="font-bold text-indigo-600">
-              Free
+              {{ $event->price }}
             </span>
 
             <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">

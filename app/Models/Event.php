@@ -10,13 +10,25 @@ use Illuminate\Support\Facades\File;
 class Event extends Model
 {
     // Allow mass assignment (multiple property values at once)
-    protected $fillable = ['name', 'description', 'image', 'featured', 'category_id'];
+    protected $fillable = [
+        'name',
+        'location',
+        'price',
+        'event_date',
+        'description',
+        'image',
+        'featured',
+        'category_id',
+    ];
 
-    public function getImageUrl()
-    {
-        $imageUrl = public_path("images/events/" . $this->image);
-
-    }
+    // Cast fields as specific data types
+    protected $casts = [
+        'price' => 'decimal:2',
+        'event_date' => 'datetime',
+        'featured' => 'boolean',
+        'category_id' => 'integer',
+    ];
+    
 
     /**
      * Defines a dynamic image_url property (Attribute Accessor)
