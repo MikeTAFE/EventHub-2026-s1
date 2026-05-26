@@ -28,7 +28,7 @@ class Event extends Model
         'featured' => 'boolean',
         'category_id' => 'integer',
     ];
-    
+
 
     /**
      * Defines a dynamic image_url property (Attribute Accessor)
@@ -44,6 +44,22 @@ class Event extends Model
 
             // Fallback to a placeholder image
             return asset('images/placeholder-image.png');
+        });
+    }
+    
+
+    /**
+     * Defines a dynamic price_formatted property (Attribute Accessor)
+     * Usage: $event->price_formatted
+     */
+    protected function priceFormatted(): Attribute
+    {
+        return Attribute::get(function () {
+            // Check if event is free
+            if ($this->price == 0) return 'Free';
+
+            // Format as price
+            return '$' . number_format($this->price, 2);
         });
     }
 
