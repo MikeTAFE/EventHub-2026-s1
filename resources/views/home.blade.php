@@ -22,8 +22,10 @@
   <section class="max-w-7xl mx-auto px-6 py-12">
     <h3 class="h3">Browse by Category</h3>
 
+    <x-nav-categories />
+
     {{-- Placeholder for category links --}}
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {{-- <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <a href="/categories/1" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
         🎵 Music
       </a>
@@ -40,7 +42,7 @@
         💻 Technology
       </a>
     </div>
-  </section>
+  </section> --}}
 
   @include('partials._hero')
 
