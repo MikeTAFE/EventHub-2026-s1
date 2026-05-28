@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,27 @@ Route::get('/', function () {
     return view('home', $data);
 })->name("home");
 
-// Events
+
+/*
+ * Events
+ */
 
 // Use the "index" method of the EventController
 Route::get('/events', [EventController::class, 'index'])->name("events.index");
 
 // GET /events/3
 Route::get('/events/{id}', [EventController::class, 'show'])->name("events.show");
+
+
+/*
+ * Categories
+ */
+
+// Use the "index" method of the CategoryController
+// Route::get('/categories', [CategoryController::class, 'index'])->name("categories.index");
+
+// GET /categories/3
+Route::get('/categories/{id}', [CategoryController::class, 'show'])->name("categories.show");
 
 
 /*

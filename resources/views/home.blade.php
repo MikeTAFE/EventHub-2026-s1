@@ -24,19 +24,19 @@
 
     {{-- Placeholder for category links --}}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <a href="#" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
+      <a href="/categories/1" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
         🎵 Music
       </a>
 
-      <a href="#" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
+      <a href="/categories/2" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
         💼 Business
       </a>
 
-      <a href="#" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
+      <a href="/categories/3" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
         🎨 Arts
       </a>
 
-      <a href="#" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
+      <a href="/categories/4" class="bg-white hover:bg-blue-100 p-6 rounded-xl shadow text-center">
         💻 Technology
       </a>
     </div>
