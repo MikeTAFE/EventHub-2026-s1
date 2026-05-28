@@ -50,8 +50,8 @@ class EventController extends Controller
         // ->when() conditionally runs the next bit of code
         $events = Event::query()->when($searchTerm, function ($query, $search) {
             // Filter by "name"
-            return $query->where("name", "like", "%{$search}%")->get();
-        });
+            return $query->where("name", "like", "%{$search}%");
+        })->get();
 
         // Pass data into the view
         return view('search', ["events" => $events, "searchTerm" => $searchTerm]);
