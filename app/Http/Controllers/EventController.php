@@ -35,4 +35,25 @@ class EventController extends Controller
         // Pass data into the view
         return view('show_event', ["event" => $event]);
     }
+
+    /**
+     * Display events matching search query
+     *
+     * @param Request $request HTTP request object
+     */
+    public function search(Request $request)
+    {
+        // Get the user "query" passed via query string
+        $searchTerm = $request->input("query");
+
+        // Search for events using the search term IF one was provided
+        // ->when() conditionally runs the next bit of code
+        $events = Event::query()->when($searchTerm, function ($query, $search) {
+            // Filter by "name"
+            return $query->where("name", "like", "%{$search}%")->get();
+        });
+
+        // Pass data into the view
+        return view('search', ["events" => $events, "searchTerm" => $searchTerm]);
+    }
 }

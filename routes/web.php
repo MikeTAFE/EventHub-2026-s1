@@ -34,6 +34,9 @@ Route::get('/events', [EventController::class, 'index'])->name("events.index");
 // GET /events/3
 Route::get('/events/{id}', [EventController::class, 'show'])->name("events.show");
 
+// GET /search?query=abc
+Route::get('/search', [EventController::class, 'search'])->name("events.search");
+
 
 /*
  * Categories
