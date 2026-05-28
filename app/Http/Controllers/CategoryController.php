@@ -22,6 +22,6 @@ class CategoryController extends Controller
         $events = Event::where("category_id", $id)->get();
 
         // Pass data into the view
-        return view('show_category', ["category" => $category, "events" => $events]);
+        return view('categories.show', ["category" => $category, "events" => $events]);
     }
 }

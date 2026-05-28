@@ -19,7 +19,7 @@ class EventController extends Controller
         $events = Event::all();
 
         // Pass data into the view
-        return view('events', ["events" => $events]);
+        return view('events.index', ["events" => $events]);
     }
 
     /**
@@ -33,7 +33,7 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         // Pass data into the view
-        return view('show_event', ["event" => $event]);
+        return view('events.show', ["event" => $event]);
     }
 
     /**
@@ -54,6 +54,6 @@ class EventController extends Controller
         })->get();
 
         // Pass data into the view
-        return view('search', ["events" => $events, "searchTerm" => $searchTerm]);
+        return view('events.search', ["events" => $events, "searchTerm" => $searchTerm]);
     }
 }
