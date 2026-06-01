@@ -5,7 +5,7 @@
   <section class="bg-white">
     <div class="max-w-7xl mx-auto px-6 py-16">
 
-      <h1 class="h1">Welcome to EventHub</h1>
+      <h1 class="h1">Welcome to EventHub (updated!)</h1>
 
       <p class="text-gray-600 leading-relaxed">
         EventHub helps people discover and register for exciting events including music festivals, conferences, workshops, and networking opportunities.
