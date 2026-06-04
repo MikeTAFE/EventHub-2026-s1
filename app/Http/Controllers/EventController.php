@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class EventController extends Controller
 {
@@ -56,5 +57,45 @@ class EventController extends Controller
 
         // Pass data into the view
         return view('events.search', ["events" => $events, "searchTerm" => $searchTerm]);
+    }
+
+    /**
+     * Save an event to session memory
+     *
+     * @param integer $id Event ID
+     */
+    public function save(int $id)
+    {
+        // Get the current list of saved events (from session)
+        // Default to empty list
+        // $savedEvents = session()->get("saved_events", []);
+        $savedEvents = Session::get("saved_events", []);
+        
+        // Add the new event ID to the list (if it's not already there)
+        if (!in_array($id, $savedEvents)) {
+            $savedEvents[] = $id;
+        }
+
+        // Save the updated list (into session)
+        // session()->put("saved_events", $savedEvents);
+        Session::put("saved_events", $savedEvents);
+
+        // Redirect user back where they came from
+        return redirect()->back()->with("message", "Event saved successfully! 🎟");
+    }
+
+    /**
+     * Display a listing of saved events
+     */
+    public function showSaved()
+    {
+        // Get saved event IDs from session
+        $savedEventIds = Session::get("saved_events", []);
+
+        // Fetch the actual events from the DB
+        $events = Event::whereIn("id", $savedEventIds)->get();
+
+        // Pass data into the view
+        return view('events.saved', ["events" => $events]);
     }
 }

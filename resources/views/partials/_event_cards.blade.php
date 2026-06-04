@@ -30,9 +30,16 @@
               {{ $event->price_formatted }}
             </span>
 
-            <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
-              More info
-            </a>
+            <form method="post" action="{{ route("events.save", $event->id) }}" class="flex gap-1">
+              @csrf
+              <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 cursor-pointer">
+                Save
+              </button>
+
+              <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                More info
+              </a>
+            </form>
           </div>
         </div>
       </div>

@@ -37,6 +37,12 @@ Route::get('/events/{id}', [EventController::class, 'show'])->name("events.show"
 // GET /search?query=abc
 Route::get('/search', [EventController::class, 'search'])->name("events.search");
 
+// POST /events/3/save
+Route::post('/events/{id}/save', [EventController::class, 'save'])->name("events.save");
+
+// GET /saved
+Route::get('/saved', [EventController::class, 'showSaved'])->name("events.saved");
+
 
 /*
  * Categories
