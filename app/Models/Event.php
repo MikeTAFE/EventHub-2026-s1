@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class Event extends Model
 {
@@ -60,6 +61,23 @@ class Event extends Model
 
             // Format as price
             return '$' . number_format($this->price, 2);
+        });
+    }
+    
+
+    /**
+     * Defines a dynamic is_saved property (Attribute Accessor)
+     * Usage: $event->is_saved
+     */
+    protected function isSaved(): Attribute
+    {
+        return Attribute::get(function () {
+            
+            // Get the current list of saved events (from session)
+            $savedEvents = Session::get("saved_events", []);
+            
+            // Check if event is saved in the session
+            return in_array($this->id, $savedEvents);
         });
     }
 
