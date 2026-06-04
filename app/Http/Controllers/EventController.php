@@ -81,7 +81,7 @@ class EventController extends Controller
         Session::put("saved_events", $savedEvents);
 
         // Redirect user back where they came from
-        return redirect()->back()->with("message", "Event saved successfully! 🎟");
+        return redirect()->back()->with("success", "Event saved! 🎟");
     }
 
     /**
@@ -106,7 +106,7 @@ class EventController extends Controller
         Session::put("saved_events", $savedEvents);
 
         // Redirect user back where they came from
-        return redirect()->back()->with("message", "Event unsaved successfully! 🎟");
+        return redirect()->back()->with("message", "Event unsaved.");
     }
 
     /**

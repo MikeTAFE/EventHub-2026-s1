@@ -24,6 +24,8 @@
       </div>
     </header>
 
+    @include('partials._flash')
+
     <main>
       @yield('content')
     </main>
