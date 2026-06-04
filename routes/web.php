@@ -40,6 +40,9 @@ Route::get('/search', [EventController::class, 'search'])->name("events.search")
 // POST /events/3/save
 Route::post('/events/{id}/save', [EventController::class, 'save'])->name("events.save");
 
+// POST /events/3/unsave
+Route::post('/events/{id}/unsave', [EventController::class, 'unsave'])->name("events.unsave");
+
 // GET /saved
 Route::get('/saved', [EventController::class, 'showSaved'])->name("events.saved");
 

@@ -85,6 +85,31 @@ class EventController extends Controller
     }
 
     /**
+     * Remove an event from session memory
+     *
+     * @param integer $id Event ID
+     */
+    public function unsave(int $id)
+    {
+        // Get the current list of saved events (from session)
+        $savedEvents = Session::get("saved_events", []);
+        
+        // Remove event ID from the list (ONLY if it exists)
+        if (($key = array_search($id, $savedEvents)) !== false) {
+            unset($savedEvents[$key]);
+        }
+
+        // Condense the array to cover the gap of the missing value
+        $savedEvents = array_values($savedEvents);
+
+        // Save the updated list (into session)
+        Session::put("saved_events", $savedEvents);
+
+        // Redirect user back where they came from
+        return redirect()->back()->with("message", "Event unsaved successfully! 🎟");
+    }
+
+    /**
      * Display a listing of saved events
      */
     public function showSaved()

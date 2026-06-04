@@ -30,16 +30,29 @@
               {{ $event->price_formatted }}
             </span>
 
-            <form method="post" action="{{ route("events.save", $event->id) }}" class="flex gap-1">
-              @csrf
-              <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 cursor-pointer">
-                Save
-              </button>
+            @if ($event->is_saved)
+              <form method="post" action="{{ route("events.unsave", $event->id) }}" class="flex gap-1">
+                @csrf
+                <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 cursor-pointer">
+                  Unsave
+                </button>
 
-              <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
-                More info
-              </a>
-            </form>
+                <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                  More info
+                </a>
+              </form>
+            @else
+              <form method="post" action="{{ route("events.save", $event->id) }}" class="flex gap-1">
+                @csrf
+                <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 cursor-pointer">
+                  Save
+                </button>
+
+                <a href="{{ route("events.show", $event->id) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                  More info
+                </a>
+              </form>
+            @endif
           </div>
         </div>
       </div>
