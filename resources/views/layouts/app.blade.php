@@ -18,6 +18,7 @@
           <a href="{{ route("home") }}" class="hover:text-indigo-200">Home</a>
           <a href="{{ route("about") }}" class="hover:text-indigo-200">About</a>
           <a href="{{ route("events.index") }}" class="hover:text-indigo-200">Events</a>
+          <a href="{{ route("events.saved") }}" class="hover:text-indigo-200">My events</a>
           <a href="{{ route("contact") }}" class="hover:text-indigo-200">Contact</a>
         </nav>
       </div>
