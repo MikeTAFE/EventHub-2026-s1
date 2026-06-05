@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 // Route::get('/', function () {
 //     // write code...
@@ -45,6 +47,25 @@ Route::post('/events/{id}/unsave', [EventController::class, 'unsave'])->name("ev
 
 // GET /saved
 Route::get('/saved', [EventController::class, 'showSaved'])->name("events.saved");
+
+// GET /checkout
+// Display the checkout form
+Route::get('/checkout', function () {
+
+    // Get the saved event IDs from the session
+    $savedEventIds = Session::get("saved_events", []);
+
+    // OPTIONAL: Get the actual events (from DB) if you want to display titles
+    $events = Event::whereIn("id", $savedEventIds)->get();
+
+    // Pass data into the view
+    return view('events.checkout', ["savedEvents" => $events]);
+
+})->name("events.checkout_form");
+
+// POST /checkout
+// Process the checkout form data
+Route::post('/checkout', [EventController::class, 'checkout'])->name("events.checkout");
 
 
 /*

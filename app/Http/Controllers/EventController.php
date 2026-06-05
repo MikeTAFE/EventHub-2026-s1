@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Registration;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -122,5 +123,38 @@ class EventController extends Controller
 
         // Pass data into the view
         return view('events.saved', ["events" => $events]);
+    }
+
+    /**
+     * Register for the saved events
+     *
+     * @param Request $request HTTP request object
+     */
+    public function checkout(Request $request)
+    {
+        // Validate the user's details
+        $validated = $request->validate([
+            'customer_name' => 'required|min:3',
+            'customer_email' => 'required|email',
+        ]);
+
+        // Get the saved event IDs from the session
+        $savedEventIds = Session::get("saved_events", []);
+
+        // Loop through each event ID and create a registration
+        foreach ($savedEventIds as $id) {
+            Registration::create([
+                'customer_name' => $validated['customer_name'],
+                'customer_email' => $validated['customer_email'],
+                'event_id' => $id,
+            ]);
+        }
+
+        // Clear the session (forget the saved events)
+        Session::forget("saved_events");
+
+        // Redirect with a success message
+        // OR load a "confirmation" view with registration details
+        return redirect('/')->with("success", "Registration completed! ✔");
     }
 }
