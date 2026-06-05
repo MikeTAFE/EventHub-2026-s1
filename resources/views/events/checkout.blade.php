@@ -29,6 +29,9 @@
             type="text" id="customer_name" name="customer_name"
             value="{{ old('customer_name') }}"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+          @error('customer_name')
+            <div class="text-red-700 italic">{{ $message }}</div>
+          @enderror
         </div>
 
         <div>
@@ -37,6 +40,9 @@
             type="email" id="customer_email" name="customer_email"
             value="{{ old('customer_email') }}"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+          @error('customer_email')
+            <div class="text-red-700 italic">{{ $message }}</div>
+          @enderror
         </div>
 
         <button type="submit" class="w-full rounded-lg bg-indigo-600 px-4 py-3 text-white transition hover:bg-indigo-700">Complete registration</button>
