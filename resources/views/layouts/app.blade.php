@@ -28,9 +28,20 @@
           <a href="{{ route("events.saved") }}" class="hover:text-indigo-200">My events</a>
           <a href="{{ route("contact") }}" class="hover:text-indigo-200">Contact</a>
         </nav>
+
+        @auth
+          {{-- User is logged in - show Breeze navigation --}}
+          @include('layouts.navigation')
+        @else
+          {{-- User is NOT logged in --}}
+          <nav class="space-x-6">
+            <a href="{{ route("login") }}" class="hover:text-indigo-200">Login</a>
+            <a href="{{ route("register") }}" class="hover:text-indigo-200">Register</a>
+          </nav>
+        @endauth
       </div>
     </header>
-    {{-- @include('layouts.navigation') --}}
+
     {{-- @isset($header)
       <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -43,7 +54,7 @@
 
     <main>
       @yield('content')
-      {{-- {{ $slot }} --}}
+      {{ $slot ?? '' }}
     </main>
 
     <!-- Footer -->
