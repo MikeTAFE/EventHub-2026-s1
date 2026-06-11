@@ -87,8 +87,7 @@
     @include('partials._flash')
 
     <main>
-      @yield('content')
-      {{ $slot ?? '' }}
+      @yield('content', $slot ?? '')
     </main>
 
     <!-- Footer -->
