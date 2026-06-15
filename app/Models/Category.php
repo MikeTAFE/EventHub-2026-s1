@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
+    // Allow mass assignment
+    protected $fillable = [
+        'name',
+    ];
+
     /**
      * Get events for the category.
      *

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
@@ -113,3 +114,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+/* 
+    Admin routes
+*/
+
+// Resource group that defines all of the CRUD actions/endpoints
+Route::resource("admin/categories", AdminCategoryController::class)
+    ->middleware("auth")
+    ->names("admin.categories");
+
