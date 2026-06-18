@@ -7,7 +7,7 @@
 
       <h1 class="h1">Add new event</h1>
 
-      <form action="{{ route("admin.events.store") }}" method="post">
+      <form action="{{ route("admin.events.store") }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -53,7 +53,7 @@
         <div>
           <label for="image" class="mb-1 block font-medium text-gray-700">Image:</label>
           <input
-            type="text" id="image" name="image" value="{{ old('image') }}"
+            type="file" id="image" name="image"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
           @error('image')
             <div class="text-red-700 italic">{{ $message }}</div>

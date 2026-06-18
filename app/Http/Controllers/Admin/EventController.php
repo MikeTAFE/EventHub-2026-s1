@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -46,13 +47,35 @@ class EventController extends Controller
             'price' => 'required|numeric|min:0|max:999999',
             'event_date' => 'nullable|date',
             'description' => 'nullable|string',
-            'image' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,webp|max:2048', // Max 2MB
             'featured' => 'boolean',
             'category_id' => 'required|integer|exists:categories,id',
         ]);
 
         // Set a default "false" value for "featured"
         $validated["featured"] = $validated["featured"] ?? false;
+
+        // Check if image uploaded
+        if ($request->hasFile("image")) {
+            
+            // // Save image to "public/images/events" (using Storage facade)
+            // $path = $request->file("image")->store("images/events", "public");
+            // $validated["image"] = $path;
+
+            // EXAMPLE: FOR EDIT FUNCTIONALITY (delete image if new one given)
+            // If using Storage facade and public/storage
+            // Storage::disk("public")->delete($event->image);
+            // If using full filepaths
+            // Storage::delete(public_path('images/events/' . $event->image));
+
+            // Save image to "public/images/events" (basic file move)
+            $file = $request->file("image");
+            $filename = $file->getClientOriginalName(); // Consider making unique
+            $file->move(public_path('images/events/'), $filename);
+
+            // Make sure filename goes into DB
+            $validated["image"] = $filename;
+        }
 
         // Create the event
         Event::create($validated);
