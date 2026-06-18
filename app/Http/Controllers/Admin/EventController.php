@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Http\Request;
@@ -26,8 +27,11 @@ class EventController extends Controller
      */
     public function create()
     {
+        // Get all categories from DB
+        $categories = Category::all();
+        
         // Load the create/add form
-        return view('admin.events.create');
+        return view('admin.events.create', ["categories" => $categories]);
     }
 
     /**
