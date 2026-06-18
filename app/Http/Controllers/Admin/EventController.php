@@ -97,7 +97,11 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        // Get all categories from DB
+        $categories = Category::all();
+        
+        // Load the edit form
+        return view('admin.events.edit', compact("event", "categories"));
     }
 
     /**
@@ -105,7 +109,46 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        // Convert boolean form values
+        $request->merge([
+            'featured' => $request->boolean('featured')
+        ]);
+
+        // Validate input data (errors will cause errors to be sent back to the form)
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:100',
+            'location' => 'nullable|min:2|max:50',
+            'price' => 'required|numeric|min:0|max:999999',
+            'event_date' => 'nullable|date',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,webp|max:2048', // Max 2MB
+            'featured' => 'boolean',
+            'category_id' => 'required|integer|exists:categories,id',
+        ]);
+
+        // Check if image uploaded
+        if ($request->hasFile("image")) {
+            
+            // Delete old image (using Storage facade and public/storage)
+            // Storage::disk("public")->delete($event->image);
+            
+            // Delete old image (basic filepaths)
+            Storage::delete(public_path('images/events/' . $event->image));
+
+            // Save image (basic file move)
+            $file = $request->file("image");
+            $filename = $file->getClientOriginalName(); // Consider making unique
+            $file->move(public_path('images/events/'), $filename);
+
+            // Make sure filename goes into DB
+            $validated["image"] = $filename;
+        }
+
+        // Update the event
+        $event->update($validated);
+
+        // Redirect user
+        return redirect()->route("admin.events.index")->with("success", "Event updated! ✔");
     }
 
     /**
